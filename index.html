@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>haushoch – architektur + projektmanagement</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: #000;
+      height: 100vh;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    header {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px 40px;
+      font-size: 14px;
+    }
+
+    header a {
+      color: #000;
+      text-decoration: none;
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    header a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      text-align: center;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .text-wrapper {
+      display: inline-block;
+      position: relative;
+    }
+
+    .subtitle {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .title {
+      font-weight: 700;
+      font-size: 60px;
+      letter-spacing: -1px;
+      margin-bottom: -10px;
+      transform-origin: left center;
+      display: inline-block;
+    }
+
+    /* Passe diesen Wert an, bis die Breite perfekt passt */
+    .title.scale {
+      transform: scaleX(1.05);
+    }
+
+    .coming-soon {
+      font-size: 32px;
+      font-weight: 600;
+      color: rgba(150, 150, 200, 0.4);
+      margin-top: 30px;
+      text-transform: lowercase;
+    }
+
+    @media (max-width: 768px) {
+      .title {
+        font-size: 40px;
+      }
+      .subtitle {
+        font-size: 16px;
+      }
+      .coming-soon {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="mailto:office@haushoch.at">✉️ office@haushoch.at</a>
+    <a href="tel:+4366493070511">📞 0664 93070511</a>
+  </header>
+
+  <div class="content">
+    <div class="text-wrapper">
+      <div class="title scale">haushoch.</div><br>
+      <div class="subtitle">architektur + projektmanagment</div>
+    </div>
+    <div class="coming-soon">… coming soon</div>
+  </div>
+</body>
+</html>
