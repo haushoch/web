@@ -277,21 +277,36 @@ body {
 @media(max-width: 800px){
 
   .team-grid {
-    gap: 4rem;
-  }
+      gap: 4rem;
+    }
 
-  .team-member {
-    width: 100%;
-    max-width: 320px;
-  }
+    .team-member {
+      width: 100%;
+      max-width: 320px;
+    }
 
-  .project-info small {
-    display: none;
-  }
+    /* SMALL TEXT IM GRID AUSBLENDEN */
+    .project-info small {
+      display: none !important;
+    }
 
-  .project {
-    cursor: pointer;
-  }
+    /* HOVER EFFEKT AUF MOBILE DEAKTIVIEREN */
+    .project:hover .project-info small {
+      opacity: 0;
+      transform: none;
+    }
+
+    /* PROJECTS KLICKBAR */
+    .project {
+      cursor: pointer;
+    }
+
+    /* OVERLAY ETWAS DUNKLER FÜR BESSERE LESBARKEIT */
+    .project-info {
+      background: rgba(0,0,0,0.35);
+      padding: 5rem 1rem 1rem;
+      font-size: 1.05rem;
+    }
 }
 
 
@@ -416,7 +431,7 @@ footer {
 
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
 
   opacity: 0;
   pointer-events: none;
@@ -444,6 +459,9 @@ footer {
 
   line-height: 1.8;
   color: var(--gray);
+
+  max-height: 80vh;
+overflow-y: auto;
 }
 
 .project-modal.active .project-modal-box {
