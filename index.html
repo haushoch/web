@@ -285,7 +285,17 @@ body {
     max-width: 320px;
   }
 
+  .project-info small {
+    display: none;
+  }
+
+  .project {
+    cursor: pointer;
+  }
 }
+
+
+
 
 /* PORTFOLIO GRID */
 .portfolio {
@@ -395,6 +405,57 @@ footer {
   height: 35px;
   opacity: 0.7;
   filter: grayscale(100%);
+}
+
+/* PROJECT MODAL */
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.35s ease;
+  z-index: 3000;
+}
+
+.project-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.project-modal-box {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+
+  padding: 2rem;
+
+  border-radius: 24px 24px 0 0;
+
+  transform: translateY(100%);
+  transition: 0.35s ease;
+
+  line-height: 1.8;
+  color: var(--gray);
+}
+
+.project-modal.active .project-modal-box {
+  transform: translateY(0);
+}
+
+.close-modal {
+  display: block;
+  text-align: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
 }
 
 /* MODAL */
@@ -683,7 +744,53 @@ document.addEventListener("keydown", (e) => {
     document.getElementById("modal").classList.remove("active");
   }
 });
+
+/* MOBILE PROJECT POPUP */
+
+const projects = document.querySelectorAll('.project');
+
+projects.forEach(project => {
+
+  project.addEventListener('click', () => {
+
+    if(window.innerWidth > 800) return;
+
+    const text = project.querySelector('small')?.innerHTML;
+
+    if(!text) return;
+
+    document.getElementById('projectModalText').innerHTML = text;
+
+    document.getElementById('projectModal')
+      .classList.add('active');
+
+  });
+
+});
+
+function closeProjectModal(){
+
+  document.getElementById('projectModal')
+    .classList.remove('active');
+
+}
 </script>
+
+
+
+<div class="project-modal" id="projectModal">
+
+  <div class="project-modal-box">
+
+    <span class="close-modal" onclick="closeProjectModal()">
+      ✕
+    </span>
+
+    <div id="projectModalText"></div>
+
+  </div>
+
+</div>
 
 </body>
 </html>
