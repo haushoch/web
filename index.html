@@ -169,31 +169,33 @@ body {
   margin: auto;
 }
 
-
-/* SECTIONS */
-.section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 4rem 1.5rem;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: 1s ease;
+.intro-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  margin-top: 3rem;
+  text-align: justify;
+  hyphens: auto;
 }
 
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.intro-block h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--gray);
+  margin-bottom: 1rem;
 }
 
-/* TEXT AREA */
-.text {
-  max-width: 800px;
-  font-weight: 300;
+.intro-block p {
+  font-size: 1rem;
   line-height: 1.8;
-  border-left: 2px solid var(--accent);
-  padding-left: 2rem;
-  margin: 6rem auto;
-  font-size: 1.5rem;
+  color: var(--black);
+}
+
+.intro-outro {
+  margin-top: 6rem;
+  font-size: 1.15rem;
+  color: var(--gray);
 }
 
 /* TEAM SECTION */
@@ -272,6 +274,77 @@ body {
   font-style: italic;
 }
 
+
+/* responsive */
+@media(max-width: 900px) {
+  .intro-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: left;
+  }
+}
+
+/* SECTIONS */
+.section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 4rem 1.5rem;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: 1s ease;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TEXT AREA */
+.text {
+  max-width: 800px;
+  font-weight: 300;
+  line-height: 1.8;
+  border-left: 2px solid var(--accent);
+  padding-left: 2rem;
+  margin: 6rem auto;
+  font-size: 1.5rem;
+}
+
+
+
+.network-note {
+  text-align: center;
+
+  color: var(--gray);
+
+  max-width: 620px;
+
+  margin: 4rem auto 0;
+
+  font-size: 0.92rem;
+  line-height: 1.9;
+}
+
+@media(max-width: 800px){
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+}
+
+
+
+@media(max-width: 800px){
+
+  .leadership-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+}
+
 /* MOBILE */
 
 @media(max-width: 800px){
@@ -309,7 +382,88 @@ body {
     }
 }
 
+/* PORTFOLIO GROUPS */
 
+.portfolio-group {
+  margin-bottom: 7rem;
+}
+
+/* PORTFOLIO HEADER MIT BILD */
+
+.portfolio-header {
+  margin-bottom: 3.5rem;
+}
+
+.portfolio-header h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.portfolio-header-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 3rem;
+  align-items: start;
+}
+.portfolio-mood {
+  align-self: start;
+}
+.portfolio-header-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.portfolio-header-content {
+  margin-bottom: 4rem;
+}
+
+.portfolio-header-text {
+  max-width: 320px;
+}
+
+.portfolio-header p {
+  color: var(--gray);
+  line-height: 1.9;
+  font-size: 1rem;
+  text-wrap: pretty;
+}
+
+.portfolio-mood {
+  width: 100%;
+  aspect-ratio: 18 / 5;
+  overflow: hidden;
+  background: #f3f3f3;
+}
+
+.portfolio-mood img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition: 0.6s ease;
+}
+
+.portfolio-mood:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+/* MOBILE */
+@media(max-width: 900px) {
+  .portfolio-header-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .portfolio-header-text {
+    max-width: 100%;
+  }
+
+  .portfolio-mood {
+    aspect-ratio: 16 / 7;
+  }
+}
 
 
 /* PORTFOLIO GRID */
@@ -507,10 +661,75 @@ overflow-y: auto;
   .hero-bg-wrapper { width: 90%; }
   .in-gruendung { font-size: 1.8rem; }
 }
+
+.contact-main {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+.contact-text {
+  margin-top: 1.5rem;
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  margin-top: 2.5rem;
+}
+
+.contact-button {
+  display: inline-block;
+
+  padding: 14px 24px;
+
+  border: 1px solid var(--black);
+
+  color: var(--black);
+  text-decoration: none;
+
+  transition: 0.3s ease;
+
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+}
+
+.contact-button:hover {
+  background: var(--black);
+  color: white;
+}
+
+.contact-button.secondary {
+  border-color: var(--line);
+}
+
+.contact-locations {
+  margin-top: 3rem;
+
+  color: var(--gray);
+
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+
 </style>
 </head>
 
 <body>
+
+  <!-- ================================= -->
+  <!-- hier startet die HTML (Inhalte)-->
+  <!-- ================================= -->
 
 <section class="hero">
   <div class="hero-bg-wrapper">
@@ -533,6 +752,322 @@ overflow-y: auto;
   <!-- <p class="intro-eyebrow">Architektur · Projektmanagement · Bauleitung</p> -->
 
 
+
+
+
+  <h2>
+    Wir begleiten Bauprojekte ganzheitlich –
+    von der ersten Idee bis zur Fertigstellung.
+
+  </h2>
+
+  <p class="intro-text">
+Wir sind Ihr Partner für Ihre individuellen Architektur.<br>
+    Strukturiert, verlässlich, zielgerichtet.
+  </p>
+
+
+  <br>
+   <a href="mailto:office@haushoch.at" class="contact-button">
+     Kontakt
+   </a>
+
+
+  <div class="intro-columns">
+    <!-- ================================= -->
+    <!-- Intro Block auskommentiert-->
+    <!--
+    <div class="intro-block">
+      <h3>Erfahrung</h3>
+      <p>
+      Mehr als 20 Jahre Berufserfahrung in der Schweiz und Österreich
+      </p>
+    </div>
+
+    <div class="intro-block">
+      <h3>Umsetzung</h3>
+      <p>
+      Über 40 realisierte Projekte – vom Einfamilienhaus bis zum öffentlichen Bau
+      </p>
+    </div>
+
+    <div class="intro-block">
+      <h3>Kompetenz</h3>
+      <p>
+        Interdisziplinäre Zusammenarbeit aus Architekt und Baumeister <br>
+
+      </p>
+    </div>
+
+  </div>
+
+
+  <p class="intro-text intro-outro">
+
+    Aus Ideen werden gebaute Räume. <br>
+    Wir freuen uns über Ihre Nachricht.
+  </p>
+
+  ================================= -->
+
+
+</section>
+
+
+
+
+  <section class="section">
+
+    <!-- GRUPPE 1 -->
+    <div class="portfolio-group">
+
+      <div class="intro-block">
+
+        <h3>Unsere Leistungen</h3>
+
+        <div class="portfolio-header-content">
+
+          <div class="portfolio-header-text">
+            <p>
+              Wir bieten das gesamte Spektrum architektonischer Planungsleistungen
+              – von der Machbarkeitsstudie bis zur Ausführung. Schwerpunkte sind
+              Neu- und Umbauten in den Bereichen Wohnen, Arbeit, Bildung,
+              Gesundheit und öffentliche Bauten.
+            </p>
+          </div>
+          <!-- ================================= -->
+          <!-- stimmungsbild auskommentiert-->
+          <!--
+          <div class="portfolio-mood">
+            <img src="images/stimmung-leistungen.png" alt="Unsere Leistungen">
+          </div>
+================================= -->
+        </div>
+
+      </div>
+
+      <div class="portfolio">
+
+        <div class="project">
+          <img src="images/machbarkeit2.jpg">
+          <div class="project-info">
+            Projektierung und Machbarkeitsstudie
+            <br>
+            <small>
+              Sie suchen Klarheit, bevor investiert wird? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/skizze.jpg">
+          <div class="project-info">
+            Entwurf
+            <br>
+            <small>
+              Schon eine Idee? Gemeinsam bringen wir es auf Papier ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/einreichplanung.jpg">
+          <div class="project-info">
+            Einreichplanung
+            <br>
+            <small>
+              Wünschen Sie eine rechtssichere Genehmigung? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/ausfuehrungsplanung.jpg">
+          <div class="project-info">
+            Ausführungsplanung
+            <br>
+            <small>
+              Sie möchten ihr genehmigtes Bauvorhaben realisieren? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/ausschreibung.jpg">
+          <div class="project-info">
+            Ausschreibung
+            <br>
+            <small>
+              Sie suchen unabhängige Leistungsvergleiche ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/detail.jpg">
+          <div class="project-info">
+            Detailplanung
+            <br>
+            <small>
+              Sie wollen hochwertige Qualität effizient umgesetzt? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/oeba.jpg">
+          <div class="project-info">
+            Örtliche Bauleitung
+            <br>
+            <small>
+              Möchten Sie sich auf Qualität, Termine und Kosten verlassen können? ...
+            </small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- GRUPPE 2 -->
+<div class="portfolio-group">
+
+  <div class="intro-block">
+
+    <h3>Unsere Expertise</h3>
+
+    <div class="portfolio-header-content">
+
+      <div class="portfolio-header-text">
+        <p>
+          Wir skizzieren und bauen Lebensräume, die berühren,
+          funktionieren und Freude im Alltag schaffen.<br><br>
+
+          Wir stehen für Materialehrlichkeit und präzise
+          Detailausführung.<br><br>
+
+          Weiterbauen im Bestand und dadurch Mehrwert schaffen,
+          der ergänzt und bestärkt.
+        </p>
+      </div>
+      <!-- ================================= -->
+      <!-- hier startet die HTML (Inhalte)-->
+      <!--
+      <div class="portfolio-mood">
+        <img src="images/stimmung-expertise.png" alt="Unsere Expertise">
+      </div>
+================================= -->
+    </div>
+
+  </div>
+
+      <div class="portfolio">
+
+        <div class="project">
+          <img src="images/bauenimbestand.jpg">
+          <div class="project-info">
+            Bauen im Bestand
+            <br>
+            <small>
+              Sie möchten Umbauen, Sanieren oder Erweitern? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/einfachesbauen.jpg">
+          <div class="project-info">
+            Einfaches Bauen
+            <br>
+            <small>
+              Suchen Sie nach wirtschaftlichen Lösungen ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/farbe.jpg">
+          <div class="project-info">
+            Farbkonzepte
+            <br>
+            <small>
+              Welchen Charakter soll Ihr Gebäude oder Ihr Raum bekommen? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/schulen.jpg">
+          <div class="project-info">
+            Öffentliche Bildungseinrichtungen
+            <br>
+            <small>
+              Sie wünschen langlebige, kindgerechte Lebensräume ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/retail.jpg">
+          <div class="project-info">
+            Experience Design
+            <br>
+            <small>
+              Möchten Sie Ihre Marke im Raum erlebbar machen? ...
+            </small>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="images/wohnen.jpg">
+          <div class="project-info">
+            Mehrfamilienhaus · Einfamilienhaus · Reihenhaus · Doppelhaus
+            <br>
+            <small>
+              ...oder einfach Ihr spezieller Raum, der verwirklicht werden soll?
+            </small>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- GRUPPE 3 -->
+    <div class="portfolio-group">
+
+
+        <div class="intro-block">
+        <h3>Unsere Arbeitsweise</h3>
+
+        <div class="portfolio-header-content">
+
+          <div class="portfolio-header-text">
+            <p>
+              Wir denken, entwickeln und entwerfen gemeinsam mit unseren
+              Bauherrschaften – in direkten, klaren Kommunikationswegen.<br><br>
+
+              Nachhaltige Architektur bedeutet für uns,
+              Verantwortung für die gebaute Umwelt zu übernehmen und
+              gestalterische, wirtschaftliche sowie ökologische Aspekte
+              in Einklang zu bringen.<br><br>
+
+              Gemeinsam mit unseren Fachplanern entstehen durchdachte
+              Konzepte, die Qualität und Klarheit vereinen.
+            </p>
+          </div>
+          <!-- ================================= -->
+          <!-- hier startet die HTML (Inhalte)-->
+          <!--
+          <div class="portfolio-mood">
+            <img src="images/stimmung-arbeitsweise.png" alt="Unsere Arbeitsweise">
+          </div>
+================================= -->
+        </div>
+
+      </div>
+
+  </section>
 
   <section class="section team-section">
 
@@ -560,7 +1095,7 @@ overflow-y: auto;
           </p>
 
           <p class="team-statement">
-            „Wir bauen Lebensräume, die berühren, funktionieren und Freude im Alltag schaffen.“
+            „Wir skizzieren und bauen Lebensräume, die berühren, funktionieren und Freude im Alltag schaffen.“
           </p>
         </div>
       </div>
@@ -589,130 +1124,47 @@ overflow-y: auto;
   </section>
 
 
-  <h2>
-    Wir begleiten Bauprojekte ganzheitlich –
-    von der ersten Idee bis zur Fertigstellung.
-  </h2>
-
-  <p class="intro-text">
-    Strukturiert, verlässlich, zielgerichtet.
-  </p>
-</section>
+<section class="section contact">
 
 
 
+    <h2>Kontakt</h2>
 
-<section class="section">
-  <div class="portfolio">
+    <p class="contact-text">
+      Sie planen ein Bauvorhaben,
+      eine Sanierung oder ein neues Nutzungskonzept?
+    </p>
 
-    <div class="project">
-          <img src="images/machbarkeit2.jpg">
-          <div class="project-info">Projektierung und Machbarkeitsstudie<br><small>Sie suchen Klarheit, bevor investiert wird? Wir prüfen Ihr Vorhaben technisch, rechtlich und wirtschaftlich auf Herz und Nieren und schaffen Raum mit Lebensqualität.</small></div>
-    </div>
-
-    <div class="project">
-          <img src="images/skizze.jpg">
-          <div class="project-info">Entwurf<br><small>Schon eine Idee? Gemeinsam bringen wir es auf Papier und skizzieren das Fundament für alle weiteren Entscheidungen.</small></div>
-    </div>
-
-    <div class="project">
-          <img src="images/einreichplanung.jpg">
-          <div class="project-info">Einreichplanung<br><small>Wünschen Sie eine rechtssichere Genehmigung? Wir erstellen die notwendigen Unterlagen für die behördliche Genehmigung Ihres Bauprojekts.</small></div>
-    </div>
-
-    <div class="project">
-          <img src="images/ausfuehrungsplanung.jpg">
-          <div class="project-info">Ausführungsplanung<br><small>Sie möchten ihr genehmigtes Bauvorhaben realisieren? Wir planen präzise das Grosse Ganze, koordiniert mit der Fachplanung und der Detailplanung.</small></div>
-    </div>
-
-        <div class="project">
-              <img src="images/ausschreibung.jpg">
-              <div class="project-info">Ausschreibung<br><small>Sie suchen unabhängige Leistungsvergleiche und Kostensicherheit? Profitieren Sie von präzisen Ausschreibungen, die Angebote der Firmen vergleichbar machen.</small></div>
-        </div>
-
-    <div class="project">
-          <img src="images/detail.jpg">
-          <div class="project-info">Detailplanung<br><small>Sie wollen hochwertige Qualität effizient umgesetzt? Wir zeichnen Details, Schnittstellen und wählen Materialien mit höchster Sorgfalt.</small></div>
-    </div>
-
-    <div class="project">
-          <img src="images/oeba.jpg">
-          <div class="project-info">Örtliche Bauleitung<br><small>Möchten Sie sich auf Qualität, Termine und Kosten verlassen können? Wir vertreten Ihre Interessen auf der Baustelle und sorgen dafür, dass alles nach Plan läuft.</small></div>
-    </div>
+    <p class="contact-main">
+      <strong class="brand">haushoch. ZT GmbH</strong>
+    </p>
 
 
+  <div class="contact-actions">
 
+    <a href="mailto:office@haushoch.at" class="contact-button">
+      office@haushoch.at
+    </a>
 
-
-        <div class="project">
-              <img src="images/bauenimbestand.jpg">
-              <div class="project-info">Bauen im Bestand<br><small> Sie möchten Umbauen, Sanieren oder Erweitern? Wir schätzen den Bestand und schaffen mit Ihnen eine neuen Lebensraum.</small></div>
-        </div>
-
-    <div class="project">
-          <img src="images/einfachesbauen.jpg">
-          <div class="project-info">Einfaches Bauen<br><small>Suchen Sie nach wirtschaftlichen Lösungen ohne unnötige Komplexität? Reduzieren Sie den Aufwand, nicht die Qualität. Wir entwickeln für Sie klare Konzepte, die einfach, effizient und kostensparend sind.</small></div>
-    </div>
-
-    <div class="project">
-      <img src="images/farbe.jpg">
-      <div class="project-info">Farbkonzepte<br><small>Welchen Charakter soll Ihr Gebäude oder Ihr Raum bekommen? Wir gestalten Räume durch Materialien und Farben, die Identität stiften.
-</small></div>
-    </div>
-
-
-
-
-
-
-    <div class="project">
-      <img src="images/schulen.jpg">
-      <div class="project-info">Öffentliche Bildungseinrichtungen<br><small> Sie wünschen langlebige, kindgerechte Lebensräume, die Ihr pädagogisches Konzept architektonisch perfekt unterstützen? Wir unterstützen Sie in dem Prozess für neue Bildungsräume.</small></div>
-    </div>
-<!--
-        <div class="project">
-          <img src="images/Hotel.jpg">
-          <div class="project-info">Hotel<br><small>...</small></div>
-        </div>
--->
-        <div class="project">
-          <img src="images/retail.jpg">
-          <div class="project-info">Experience Design<br><small>Möchten Sie Ihre Marke im Raum erlebbar machen? Wir schaffen die Bühne für Ihren Erfolg.</small></div>
-        </div>
-
-    <div class="project">
-      <img src="images/wohnen.jpg">
-      <div class="project-info">Mehrfamilienhaus Einfamilienhaus Reihenhaus Doppelhaus<br><small>...oder einfach Ihr spezieller Raum, der verwirklicht werden soll? Wir unterstützen Sie dabei.</small></div>
-    </div>
-
-
-
-
-
-
-
-
-
+    <a href="tel:+4366493070511" class="contact-button secondary">
+      +43 664 9307 0511
+    </a>
 
   </div>
-</section>
 
-<section class="section contact">
-  <h2>Kontakt</h2>
-  <p>
-    <strong class="brand">haushoch. ZT GmbH </strong><br>
-    Interdisziplinäre GmbH mit ZT für Architektur und Baumeister GmbH (in Gründung)<br>
-    <strong> Attersee · Salzburg · Grundlsee </strong> <br>
-    <strong>office@haushoch.at</strong><br>
-    +43 664 9307 0511 oder +43 664 7353 3935
+  <p class="contact-locations">
+    Attersee · Salzburg · Grundlsee
   </p>
 
   <div class="contact-row">
     <img src="images/baumeister-logo-sw.png" alt="Baumeister">
-    <img src="images/logo2.png" alt="Bild 2" class="Ziviltechniker">
+    <img src="images/logo2.png" alt="Ziviltechniker">
   </div>
 
 </section>
+
+
+
 
 <footer>
   <div style="cursor:pointer; text-decoration: underline;" onclick="toggleModal()">Impressum</div>
@@ -731,7 +1183,11 @@ overflow-y: auto;
       Glanstrasse 4a<br>
       5082 Fürstenbrunn<br>
       Österreich<br>
-      Tel: +43 664 9307 0511
+<br>
+      Geschäftsführung: <br>
+      DI Martha Mörzinger, Architektin, Ziviltechnikerin, Tel: +43 664 7353 3935<br>
+      Ing. Stefan Ebner-Kalss, Baumeister, Tel: +43 664 9307 0511<br>
+
     </p>
   </div>
 </div>
