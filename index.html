@@ -329,11 +329,17 @@ max-width: 65ch;
 
 /* responsive */
 @media(max-width: 900px) {
+
   .intro-columns {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
-    text-align: left;
   }
+
+  .intro-facts {
+    margin-top: 0;
+  }
+
 }
 
 /* SECTIONS */
@@ -436,7 +442,15 @@ max-width: 65ch;
     transition: 0.4s ease;
   }
 
+  @media (max-width:800px){
 
+    .project-info{
+      font-size: 0.9rem;
+      line-height: 1.4;
+      padding: 1rem;
+    }
+
+  }
 
   /* Titel klarer */
   .project-info {
