@@ -150,6 +150,8 @@ body {
   margin-bottom: 1.5rem;
 }
 
+
+
 .intro-text {
   font-size: 1.1rem;
   color: var(--gray);
@@ -157,14 +159,42 @@ body {
   margin: auto;
 }
 
-.intro-columns {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 3rem;
-  margin-top: 3rem;
-  text-align: justify;
-  hyphens: auto;
+
+
+.intro-columns{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  gap:5rem;
+  margin-top:5rem;
 }
+
+.intro-facts-bar{
+  display:flex;
+  justify-content:center;
+  gap:4rem;
+  padding:2rem 0;
+
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+
+  margin:4rem 0;
+}
+
+.intro-facts{
+  text-align:center;
+}
+.intro-facts h3{
+  font-size: clamp(2rem, 4vw, 3.8rem);
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+
+  color: #e9e9e9;
+
+  text-transform:none;
+}
+
 
 .intro-block h3 {
   font-size: 0.8rem;
@@ -178,12 +208,46 @@ body {
   font-size: 1rem;
   line-height: 1.8;
   color: var(--black);
+  text-align: left;
+max-width: 65ch;
 }
+
+.intro-block {
+  padding: 2rem;
+  background: #fafafa;
+  border: 1px solid rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+}
+
+.intro-block:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,0,0,0.06);
+}
+
+
 
 .intro-outro {
   margin-top: 6rem;
   font-size: 1.15rem;
   color: var(--gray);
+}
+
+
+.intro-facts{
+  display:flex;
+  justify-content:center;
+  gap:5rem;
+  margin-top:4rem;
+}
+
+.fact{
+  text-align:center;
+}
+
+.fact-number{
+  font-size:3rem;
+  font-weight:700;
+  color:var(--accent);
 }
 
 /* TEAM SECTION */
@@ -313,62 +377,74 @@ body {
   line-height: 1.9;
 }
 
-@media(max-width: 800px){
 
-  .leadership-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-}
-
-
-
-@media(max-width: 800px){
-
-  .leadership-grid {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-}
 
 /* MOBILE */
 
-@media(max-width: 800px){
+@media (max-width: 800px) {
 
   .team-grid {
-      gap: 4rem;
-    }
+    gap: 4rem;
+  }
 
-    .team-member {
-      width: 100%;
-      max-width: 320px;
-    }
+  .team-member {
+    width: 100%;
+    max-width: 320px;
+  }
 
-    /* SMALL TEXT IM GRID AUSBLENDEN */
-    .project-info small {
-      display: none !important;
-    }
+  /* 👉 Wichtig: Text bleibt im DOM, aber wird NICHT im Grid gezeigt */
+  .project-info small {
+    opacity: 0;          /* unsichtbar */
+    pointer-events: none;
+  }
 
-    /* HOVER EFFEKT AUF MOBILE DEAKTIVIEREN */
-    .project:hover .project-info small {
-      opacity: 0;
-      transform: none;
-    }
 
-    /* PROJECTS KLICKBAR */
-    .project {
-      cursor: pointer;
-    }
 
-    /* OVERLAY ETWAS DUNKLER FÜR BESSERE LESBARKEIT */
-    .project-info {
-      background: rgba(0,0,0,0.35);
-      padding: 5rem 1rem 1rem;
-      font-size: 1.05rem;
-    }
+  /* Hover deaktivieren (nur Desktop relevant, aber sicherheitshalber) */
+  .project:hover .project-info small {
+    opacity: 0;
+  }
+  /* Karte bleibt klickbar */
+  .project {
+    cursor: pointer;
+  }
+
+  /* Overlay wird ruhiger */
+  .project-info {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 1.5rem;
+
+    color: white;
+
+    font-size: clamp(1rem, 1.8vw, 1.8rem);
+
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+
+    text-align: center;
+    overflow-wrap: break-word;
+    hyphens: auto;
+
+    background: rgba(0,0,0,0.45);
+    transition: 0.4s ease;
+  }
+
+
+
+  /* Titel klarer */
+  .project-info {
+    justify-content: center;
+  }
 }
+
+
 
 /* PORTFOLIO GROUPS */
 
@@ -406,15 +482,11 @@ body {
   margin-bottom: 4rem;
 }
 
-.portfolio-header-text {
-  max-width: 320px;
-}
-
 .portfolio-header p {
   color: var(--gray);
   line-height: 1.9;
   font-size: 1rem;
-  text-wrap: pretty;
+  text-align: justify;
 }
 
 .portfolio-mood {
@@ -473,7 +545,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(100%) brightness(0.8);
   transition: 0.6s ease;
 }
 
@@ -487,41 +558,61 @@ body {
   position: absolute;
   inset: 0;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* statt center */
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
   text-align: center;
-  padding: 6.5rem 1.5rem 1.5rem; /* oben fixer Abstand */
+
+  padding: 4rem 1.5rem 1.5rem;
+
   color: white;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: rgba(0, 0, 0, 0.2);
-  transition: background 0.4s ease;
+
+  background: rgba(0,0,0,0.25);
+  transition: 0.3s ease;
+  z-index: 2;
 }
+
 
 .project-info small {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: normal;
-  margin-top: auto;
-  max-width: 600px;
-  background: white;
-  color: var(--gray);
-  padding: 8px 15px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.4s ease;
-}
+  position: absolute;
+  inset: 0;              /* = komplett über das Bild */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+  padding: 2rem;
+  box-sizing: border-box;
+
+  background: rgba(255,255,255,0.96);
+  color: var(--gray);
+
+  font-size: 1rem;
+  line-height: 1.7;
+  text-align: center;
+
+  opacity: 0;
+  transform: none;       /* wichtig: alte Animation killen */
+  transition: opacity 0.35s ease;
+
+  z-index: 5;
+
+
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: var(--gray);
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: 400;
+
+}
 
 
 .project:hover .project-info {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.15);
 }
 
 .project:hover .project-info small {
@@ -592,18 +683,15 @@ footer {
   width: 100%;
   max-width: 700px;
 
-  padding: 2rem;
+  padding: clamp(1.2rem, 4vw, 3rem);
 
   border-radius: 24px 24px 0 0;
 
-  transform: translateY(100%);
-  transition: 0.35s ease;
+  max-height: 85vh;
+  overflow-y: auto;
 
-  line-height: 1.8;
   color: var(--gray);
-
-  max-height: 80vh;
-overflow-y: auto;
+  line-height: 1.6;
 }
 
 .project-modal.active .project-modal-box {
@@ -714,7 +802,8 @@ overflow-y: auto;
 </head>
 
 <body>
-
+  <meta name="description"
+  content="haushoch. ZT GmbH begleitet Bauprojekte von der ersten Idee bis zur Fertigstellung. Architektur, Einreichplanung, Bauleitung und Projektmanagement in Salzburg, dem Salzkammergut und der Steiermark.">
   <!-- ================================= -->
   <!-- hier startet die HTML (Inhalte)-->
   <!-- ================================= -->
@@ -754,37 +843,33 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
   </p>
 
 
-  <br>
-   <a href="mailto:office@haushoch.at" class="contact-button">
-     Kontakt
-   </a>
 
 
+   <!-- ================================= -->
+   <!-- Intro Block auskommentiert-->
+   <!--================================= -->
   <div class="intro-columns">
-    <!-- ================================= -->
-    <!-- Intro Block auskommentiert-->
-    <!--
-    <div class="intro-block">
-      <h3>Erfahrung</h3>
-      <p>
-      Mehr als 20 Jahre Berufserfahrung in der Schweiz und Österreich
-      </p>
+
+    <div class="intro-facts">
+    <span class="intro-number"></span>
+    <h3> >20 <br>Jahre <br>Erfahrung</h3>
+  </div>
+
+
+    <div class="intro-facts">
+      <h3>+ Architekt <br>+ Ziviltechniker <br>+ Baumeister </h3>
+
     </div>
 
-    <div class="intro-block">
-      <h3>Umsetzung</h3>
-      <p>
-      Über 40 realisierte Projekte – vom Einfamilienhaus bis zum öffentlichen Bau
-      </p>
+    <div class="intro-facts">
+      <h3>Salzburg <br>Oberösterreich <br>Steiermark</h3>
+          <alt="Architekt Salzburg, Architekt Salzkammergut, Architekt Oberösterreich, Architekt Steiermark, Architetkt Ausseerland, Architekt Vöcklabruck
+          Baumeister Salzburg, Baumeister Salzkammergut, Baumeister Oberösterreich, Baumeister Steiermark, Baumeister Ausseerland, Baumeister Vöcklabruck
+          Ziviltechniker Salzburg, Ziviltechniker Salzkammergut, Ziviltechniker Oberösterreich, Ziviltechniker Steiermark, Ziviltechniker Ausseerland, Ziviltechniker Vöcklabruck">
+
     </div>
 
-    <div class="intro-block">
-      <h3>Kompetenz</h3>
-      <p>
-        Interdisziplinäre Zusammenarbeit aus Architekt und Baumeister <br>
 
-      </p>
-    </div>
 
   </div>
 
@@ -794,8 +879,11 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
     Aus Ideen werden gebaute Räume. <br>
     Wir freuen uns über Ihre Nachricht.
   </p>
+  <br>
+   <a href="mailto:office@haushoch.at" class="contact-button">
+     Kontakt
+   </a>
 
-  ================================= -->
 
 
 </section>
@@ -817,7 +905,7 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
           <div class="portfolio-header-text">
             <p>
               Wir entwickeln und realisieren Architektur über alle Leistungsphasen hinweg – von der konzeptionellen Machbarkeitsstudie
-              bis zur Ausführung. Unser Schwerpunkt liegt auf 
+              bis zur Ausführung. Unser Schwerpunkt liegt auf
               qualitätsvollen Neu- und Umbauten für Wohnen, Arbeiten, Bildung, Gesundheit und den öffentlichen Raum.
             </p>
           </div>
@@ -848,6 +936,7 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
 
         <div class="project">
           <img src="images/skizze.jpg">
+          <alt="Architekturentwurf Einfamilienhaus Salzburg">
           <div class="project-info">
             Entwurf
             <br>
@@ -860,6 +949,7 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
 
         <div class="project">
           <img src="images/einreichplanung.jpg">
+          <alt="Einreichplanung Schule Salzburg">
           <div class="project-info">
             Einreichplanung
             <br>
@@ -872,6 +962,9 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
 
         <div class="project">
           <img src="images/ausfuehrungsplanung.jpg">
+          <alt="Ausführung Bauprojekt Salzburg">
+          <alt="Ausführung Bauprojekt Oberösterreich">
+          <alt="Ausführung Bauprojekt Vöcklabruck">
           <div class="project-info">
             Ausführungsplanung
             <br>
@@ -922,6 +1015,8 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
     </div>
 
 
+
+
     <!-- GRUPPE 2 -->
 <div class="portfolio-group">
 
@@ -934,10 +1029,10 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
       <div class="portfolio-header-text">
         <p>
           Wir skizzieren und bauen Lebensräume, die berühren,
-          funktionieren und Freude im Alltag schaffen.<br><br>
+          funktionieren und Freude im Alltag schaffen.<br>
 
           Wir stehen für Materialehrlichkeit und präzise
-          Detailausführung.<br><br>
+          Detailausführung.<br>
 
           Weiterbauen im Bestand und dadurch Mehrwert schaffen,
           der ergänzt und bestärkt.
@@ -951,7 +1046,7 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
       </div>
 ================================= -->
     </div>
-
+<br>
   </div>
 
       <div class="portfolio">
@@ -1043,14 +1138,12 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
 
           <div class="portfolio-header-text">
             <p>
-              Wir denken, entwickeln und entwerfen gemeinsam mit unseren
-              Bauherrschaften – in direkten, klaren Kommunikationswegen.<br><br>
-
+              Gute Architektur entsteht im Dialog. Wir denken, entwickeln und entwerfen gemeinsam mit unseren
+              Bauherrschaften – in direkten, klaren Kommunikationswegen.<br>
               Nachhaltige Architektur bedeutet für uns,
               Verantwortung für die gebaute Umwelt zu übernehmen und
               gestalterische, wirtschaftliche sowie ökologische Aspekte
-              in Einklang zu bringen.<br><br>
-
+              in Einklang zu bringen.<br>
               Gemeinsam mit unseren Fachplanern entstehen durchdachte
               Konzepte, die Qualität und Klarheit vereinen.
             </p>
@@ -1071,14 +1164,26 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
   <section class="section team-section">
 
     <div class="team-intro">
-      <p class="intro-eyebrow">Geschäftsführung</p>
+      <p class="intro-eyebrow">wir sind</p>
 
       <h2>
-        Architektur entsteht im Dialog –
-        mit Klarheit, Haltung und Verantwortung.
-      </h2>
-    </div>
 
+        Persönlich. Direkt. Verlässlich.
+
+      </h2>
+      <a href="mailto:office@haushoch.at" class="contact-button">
+        Erstgespräch vereinbaren
+      </a>
+
+    </div>
+    <div class="intro-block">
+    <h3>Unser Team</h3>
+      <p>
+        Hinter haushoch vereinen sich Architektur, Ziviltechnik und Baumeisterkompetenz unter einem Dach –
+        mit dem Anspruch, Bauprojekte mit Qualität, Verantwortung und Begeisterung umzusetzen.<br><br><br>
+      </p>
+    </div>
+<br>
     <div class="team-grid">
 
       <!-- PERSON 1 -->
@@ -1133,11 +1238,13 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
       Sie planen ein Bauvorhaben,
       eine Sanierung oder ein neues Nutzungskonzept?
     </p>
-<!-- auskommentiert)
-    <p class="contact-main">
-      <strong class="brand">haushoch. ZT GmbH</strong>
-    </p>
--->
+
+    <!-- auskommentiert)
+        <p class="contact-main">
+          <strong class="brand">haushoch. ZT GmbH</strong>
+        </p>
+    -->
+
 
   <div class="contact-actions">
 
@@ -1246,6 +1353,31 @@ function closeProjectModal(){
     .classList.remove('active');
 
 }
+
+function fitText(el) {
+  let parent = el.parentElement;
+
+  let fontSize = 40; // Start groß
+  el.style.fontSize = fontSize + "px";
+
+  while (
+    el.scrollHeight > parent.clientHeight ||
+    el.scrollWidth > parent.clientWidth
+  ) {
+    fontSize -= 1;
+    el.style.fontSize = fontSize + "px";
+
+    if (fontSize < 10) break; // Sicherheitsgrenze
+  }
+}
+
+/* beim Hover / Anzeigen anwenden */
+document.querySelectorAll('.project').forEach(project => {
+  project.addEventListener('mouseenter', () => {
+    const text = project.querySelector('small');
+    if (text) fitText(text);
+  });
+});
 </script>
 
 
