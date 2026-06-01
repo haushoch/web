@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>haushoch.</title>
+<title>haushoch.architektur</title>
 
 <style>
 :root {
@@ -668,6 +668,38 @@ footer {
   opacity: 0.7;
   filter: grayscale(100%);
 }
+.footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-links {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+}
+
+.footer-link {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.footer-link:hover {
+  color: var(--black);
+  text-decoration: underline;
+}
+
+.footer a.footer-link {
+  text-decoration: none;
+}
 
 /* PROJECT MODAL */
 
@@ -1286,8 +1318,20 @@ Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
 
 
 
-<footer>
-  <div style="cursor:pointer; text-decoration: underline;" onclick="toggleModal()">Impressum</div>
+<footer class="footer">
+
+  <div class="footer-links">
+
+    <div class="footer-link" onclick="toggleModal()">
+      Impressum
+    </div>
+
+    <a class="footer-link" href="downloads/werkliste.pdf" target="_blank">
+      Werkliste
+    </a>
+
+  </div>
+
 </footer>
 
 <div class="modal" id="modal" onclick="toggleModal(event)">
