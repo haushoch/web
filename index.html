@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>haushoch.architektur</title>
+<title>Architekt Salzburg & Salzkammergut | haushoch Architektur + Projektmanagement</title>
+
+<meta name="description" content="Architektur, Einreichplanung, Bauleitung und Projektmanagement für Wohnbau, Sanierungen und öffentliche Bauten. haushoch begleitet Bauprojekte in Salzburg, Salzkammergut, Oberösterreich und der Steiermark.">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://www.haushoch.at/">
+
+<meta property="og:title" content="haushoch. Architektur + Projektmanagement">
+<meta property="og:description" content="Architektur, Einreichplanung, Bauleitung und Projektmanagement in Salzburg, Salzkammergut, Oberösterreich und der Steiermark.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.haushoch.at/">
+<meta property="og:image" content="https://www.haushoch.at/images/og-image.jpg">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="haushoch. Architektur + Projektmanagement">
+<meta name="twitter:description" content="Architektur, Einreichplanung, Bauleitung und Projektmanagement für anspruchsvolle Bauprojekte.">
 
 <style>
 :root {
@@ -185,9 +201,9 @@ body {
   text-align:center;
 }
 .intro-facts h3{
-  font-size: clamp(2rem, 4vw, 3.8rem);
+  font-size: clamp(2rem, 4vw, 2.8rem);
   line-height: 0.95;
-  font-weight: 700;
+  font-weight: 550;
   letter-spacing: -0.04em;
 
   color: #e9e9e9;
@@ -579,8 +595,8 @@ max-width: 65ch;
   padding: 4rem 1.5rem 1.5rem;
 
   color: white;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
@@ -615,12 +631,13 @@ max-width: 65ch;
 
 
     font-family: inherit;
-    font-size: 1rem;
     line-height: 1.9;
     color: var(--gray);
     text-transform: none;
     letter-spacing: normal;
     font-weight: 400;
+
+    overflow-y: auto;
 
 }
 
@@ -883,10 +900,13 @@ footer {
 
   </h2>
 
+
   <p class="intro-text">
-Wir sind Ihr Partner für Ihre individuelle Architektur.<br>
-    Strukturiert, verlässlich, zielgerichtet.
-  </p>
+haushoch ist Ihr Architekturbüro für Salzburg, das Salzkammergut,
+Oberösterreich und die Steiermark. Als Architektin, Ziviltechnikerin
+und Baumeister begleiten wir Einfamilienhäuser, Mehrfamilienhäuser,
+Sanierungen, Umbauten und öffentliche Bauprojekte strukturiert, verlässlich und zielgerichtet.
+</p>
 
 
 
@@ -1435,6 +1455,14 @@ document.querySelectorAll('.project').forEach(project => {
     const text = project.querySelector('small');
     if (text) fitText(text);
   });
+});
+
+window.addEventListener('load', () => {
+  document.querySelectorAll('.project-info small').forEach(fitText);
+});
+
+window.addEventListener('resize', () => {
+  document.querySelectorAll('.project-info small').forEach(fitText);
 });
 </script>
 
