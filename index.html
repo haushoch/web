@@ -267,10 +267,16 @@ max-width: 65ch;
 }
 
 /* TEAM SECTION */
+.team-section .intro-block {
+  padding: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+}
 
 .team-section {
-  padding-top: 2rem;
-  padding-bottom: 7rem;
+  padding-top: 6rem;
+  padding-bottom: 10rem;
 }
 
 .team-intro {
@@ -342,6 +348,51 @@ max-width: 65ch;
   font-style: italic;
 }
 
+.team-editorial {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+
+  align-items: start;
+}
+
+.team-text {
+  font-size: 1.05rem;
+  line-height: 1.95;
+  color: #444;
+  max-width: 60ch;
+}
+
+.team-text h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.team-image-large {
+  aspect-ratio: auto;
+}
+
+.team-image-large img {
+  max-height: 420px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.team-image-large img {
+  transition: 0.6s ease;
+}
+
+.team-image-large:hover img {
+  filter: grayscale(0%);
+  transform: scale(1.08);
+}
 
 /* responsive */
 @media(max-width: 900px) {
@@ -420,7 +471,12 @@ max-width: 65ch;
     pointer-events: none;
   }
 
-
+  @media(max-width: 800px){
+    .founder-statements{
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
 
   /* Hover deaktivieren (nur Desktop relevant, aber sicherheitshalber) */
   .project:hover .project-info small {
@@ -521,7 +577,7 @@ max-width: 65ch;
 
 .portfolio-mood {
   width: 100%;
-  aspect-ratio: 18 / 5;
+  aspect-ratio: 18 / 12;
   overflow: hidden;
   background: #f3f3f3;
 }
@@ -588,11 +644,11 @@ max-width: 65ch;
   position: absolute;
   inset: 0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   text-align: center;
 
-  padding: 4rem 1.5rem 1.5rem;
+  padding: 1.5rem;;
 
   color: white;
   font-size: 1.5rem;
@@ -608,7 +664,8 @@ max-width: 65ch;
 
 .project-info small {
   position: absolute;
-  inset: 0;              /* = komplett über das Bild */
+  inset: 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -619,26 +676,14 @@ max-width: 65ch;
   background: rgba(255,255,255,0.96);
   color: var(--gray);
 
-  font-size: 1rem;
-  line-height: 1.7;
+  font-size: 0.95rem;
+  line-height: 1.6;
   text-align: center;
 
   opacity: 0;
-  transform: none;       /* wichtig: alte Animation killen */
   transition: opacity 0.35s ease;
 
-  z-index: 5;
-
-
-    font-family: inherit;
-    line-height: 1.9;
-    color: var(--gray);
-    text-transform: none;
-    letter-spacing: normal;
-    font-weight: 400;
-
-    overflow-y: auto;
-
+  overflow: hidden;
 }
 
 
@@ -648,8 +693,74 @@ max-width: 65ch;
 
 .project:hover .project-info small {
   opacity: 1;
+}
+
+/* FOUNDER STATEMENTS */
+
+.founder-statements{
+  max-width: 1100px;
+  margin: 6rem auto 0;
+  padding: 0 1.5rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+
+.founder-quote {
+  padding-left: 2rem;
+  border-left: 1px solid rgba(0,0,0,0.12);
+  margin-bottom: 4rem;
+}
+
+.founder-quote p{
+  font-size: 1.15rem;
+  line-height: 1.9;
+  font-weight: 300;
+  color: #111;
+  max-width: 60ch;
+  margin: 0 0 1.5rem;
+}
+
+.founder-name{
+  font-size: 0.95rem;
+  color: #111;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--accent);
+}
+
+.founder-role{
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  color: var(--gray);
+  margin-top: 0.4rem;
+}
+
+/* leichte Abwechslung */
+
+.founder-quote:nth-child(2){
+
+  margin-left: auto;
+
+  max-width: 850px;
+}
+
+.founder-quote{
+  opacity: 0;
+  transform: translateY(30px);
+  transition: 1s ease;
+}
+
+.section.visible .founder-quote{
+  opacity: 1;
   transform: translateY(0);
 }
+
+.section.visible .founder-quote:nth-child(2){
+  transition-delay: 0.3s;
+}
+
 
 /* CONTACT */
 .contact {
@@ -975,13 +1086,11 @@ Sanierungen, Umbauten und öffentliche Bauprojekte strukturiert, verlässlich un
               qualitätsvollen Neu- und Umbauten für Wohnen, Arbeiten, Bildung, Gesundheit und den öffentlichen Raum.
             </p>
           </div>
-          <!-- ================================= -->
-          <!-- stimmungsbild auskommentiert-->
-          <!--
+
           <div class="portfolio-mood">
-            <img src="images/stimmung-leistungen.png" alt="Unsere Leistungen">
+            <img src="images/bauleitung.jpg" alt="Unsere Leistungen">
           </div>
-================================= -->
+
         </div>
 
       </div>
@@ -1104,13 +1213,11 @@ Sanierungen, Umbauten und öffentliche Bauprojekte strukturiert, verlässlich un
           der ergänzt und bestärkt.
         </p>
       </div>
-      <!-- ================================= -->
-      <!-- hier startet die HTML (Inhalte)-->
-      <!--
+
       <div class="portfolio-mood">
-        <img src="images/stimmung-expertise.png" alt="Unsere Expertise">
+        <img src="images/holzbau.jpg" alt="Unsere Expertise">
       </div>
-================================= -->
+
     </div>
 <br>
   </div>
@@ -1214,13 +1321,11 @@ Sanierungen, Umbauten und öffentliche Bauprojekte strukturiert, verlässlich un
               Konzepte, die Qualität und Klarheit vereinen.
             </p>
           </div>
-          <!-- ================================= -->
-          <!-- hier startet die HTML (Inhalte)-->
-          <!--
+
           <div class="portfolio-mood">
-            <img src="images/stimmung-arbeitsweise.png" alt="Unsere Arbeitsweise">
+            <img src="images/fachplanerkoordination.png" alt="Unsere Arbeitsweise">
           </div>
-================================= -->
+
         </div>
 
       </div>
@@ -1242,56 +1347,45 @@ Sanierungen, Umbauten und öffentliche Bauprojekte strukturiert, verlässlich un
       </a>
 
     </div>
-    <div class="intro-block">
-    <h3>Unser Team</h3>
-      <p>
-        Hinter haushoch vereinen sich Architektur, Ziviltechnik und Baumeisterkompetenz unter einem Dach –
-        mit dem Anspruch, Bauprojekte mit Qualität, Verantwortung und Begeisterung umzusetzen.<br><br><br>
-      </p>
-    </div>
-<br>
-    <div class="team-grid">
 
-      <!-- PERSON 1 -->
-      <div class="team-member">
-        <div class="team-image">
-          <img src="images/martha_moerzinger.jpg" alt="Martha Mörzinger">
-        </div>
 
-        <div class="team-content">
-          <h3>Martha Mörzinger</h3>
-          <p class="team-role">
-            Architektin · Ziviltechnikerin
-          </p>
+    <div class="intro-block team-editorial">
 
-          <p class="team-statement">
-            „Wir skizzieren und bauen Lebensräume, die berühren, funktionieren und Freude im Alltag schaffen.“
-          </p>
-        </div>
+      <div class="team-text">
+
+        <h3>Unser Team</h3>
+
+        <p>
+          Hinter haushoch vereinen sich Architektur, Ziviltechnik und Baumeisterkompetenz unter einem Dach –
+          mit dem Anspruch, Bauprojekte mit Qualität, Verantwortung und Begeisterung umzusetzen.
+        </p>
+
+
+
       </div>
 
-      <!-- PERSON 2 -->
-      <div class="team-member">
-        <div class="team-image">
-          <img src="images/stefan_ebner-kalss.jpg" alt="Stefan Ebner-Kalss">
-        </div>
-
-        <div class="team-content">
-          <h3>Stefan Ebner-Kalss</h3>
-          <p class="team-role">
-            Baumeister · Ingenieur
-          </p>
-
-          <p class="team-statement">
-            „Gute Projekte entstehen durch klare Prozesse,
-            verlässliche Kommunikation und präzise Umsetzung.“
-          </p>
-        </div>
+      <div class="team-image-large">
+        <img src="images/stefan_ebner-kalss_martha_moerzinger.jpg" alt="Unser Team">
       </div>
 
     </div>
+    <div class="founder-statements">
 
+      <div class="founder-quote">
+        <p>„Gute Projekte entstehen durch klare Prozesse, verlässliche Kommunikation und präzise Umsetzung.“</p>
+        <div class="founder-name">Stefan Ebner-Kalss</div>
+        <div class="founder-role">Baumeister · Ingenieur</div>
+      </div>
+
+      <div class="founder-quote">
+        <p>„Wir entwerfen Räume. Wir bauen Lebensqualität.“</p>
+        <div class="founder-name">Martha Luise Mörzinger</div>
+        <div class="founder-role">Architektin · Ziviltechnikerin</div>
+      </div>
+
+    </div>
   </section>
+
 
 
 <section class="section contact">
@@ -1432,38 +1526,7 @@ function closeProjectModal(){
 
 }
 
-function fitText(el) {
-  let parent = el.parentElement;
 
-  let fontSize = 40; // Start groß
-  el.style.fontSize = fontSize + "px";
-
-  while (
-    el.scrollHeight > parent.clientHeight ||
-    el.scrollWidth > parent.clientWidth
-  ) {
-    fontSize -= 1;
-    el.style.fontSize = fontSize + "px";
-
-    if (fontSize < 10) break; // Sicherheitsgrenze
-  }
-}
-
-/* beim Hover / Anzeigen anwenden */
-document.querySelectorAll('.project').forEach(project => {
-  project.addEventListener('mouseenter', () => {
-    const text = project.querySelector('small');
-    if (text) fitText(text);
-  });
-});
-
-window.addEventListener('load', () => {
-  document.querySelectorAll('.project-info small').forEach(fitText);
-});
-
-window.addEventListener('resize', () => {
-  document.querySelectorAll('.project-info small').forEach(fitText);
-});
 </script>
 
 
