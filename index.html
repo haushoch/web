@@ -454,6 +454,13 @@ max-width: 65ch;
 
 /* MOBILE */
 
+@media(max-width: 800px){
+  .founder-statements{
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 800px) {
 
   .team-grid {
@@ -471,12 +478,34 @@ max-width: 65ch;
     pointer-events: none;
   }
 
-  @media(max-width: 800px){
-    .founder-statements{
+
+    .team-editorial {
       grid-template-columns: 1fr;
-      gap: 3rem;
+      gap: 2rem;
     }
+
+    .team-text {
+    order: 1;
   }
+
+  .team-image-large {
+    order: 2;
+  }
+
+  .team-image-large {
+    width: 100%;
+  }
+
+  .team-image-large img {
+    width: 100%;
+    max-height: none;
+    height: auto;
+    display: block;
+  }
+
+}
+
+
 
   /* Hover deaktivieren (nur Desktop relevant, aber sicherheitshalber) */
   .project:hover .project-info small {
